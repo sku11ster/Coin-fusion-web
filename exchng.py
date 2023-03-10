@@ -1,5 +1,11 @@
 from flask import Flask, render_template
 import requests
+import hmac
+import hashlib
+
+def binance_signature(query_params, secret_key):
+    query_string = '&'.join([f"{k}={v}" for k, v in query_params.items()])
+    return hmac.new(secret_key.encode('utf-8'), query_string.encode('utf-8'), hashlib.sha256).hexdigest()
 app = Flask(__name__)
 
 @app.route('/')
