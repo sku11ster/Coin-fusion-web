@@ -7,6 +7,8 @@
 	box-sizing: border-box;
 	font-family: 'Tilt Warp', cursive;
 	font-family: 'Work Sans', sans-serif;
+	padding: 0;
+	margin: 0;
 }
 
 body {
@@ -26,7 +28,7 @@ body {
 }
 nav {
 
-	position: fixed;
+	position: absolute;
 
 	left: 0;
 	right: 0;
@@ -90,14 +92,12 @@ nav .icon-burger .line {
 
 .p1 {
 	font-size: 1.2vw;
-    padding-left: 10vw;
     padding-top: 15vh;
     font-weight: bold;
     width: max-content;
 }
   .p2 {
     font-size: 2vw;
-    padding-left: 10vw;
     font-weight: bold;
     display: inline-block;
     width: max-content;
@@ -106,7 +106,6 @@ nav .icon-burger .line {
   .p3 {
 	font-size: 1.5vw;
     padding-top: 1vh;
-    padding-left: 10vw;
     color: #01c38d;
     font-weight: bold;
   }
@@ -122,7 +121,6 @@ nav .icon-burger .line {
     font-size: 2vh;
   }
   .button {
-    padding-left: 10vw;
     padding-top: 2vh;
   }
   .button .button:hover{
@@ -137,22 +135,37 @@ nav .icon-burger .line {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+
+  .login-page {
+	padding-top:200px;
+	
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: auto auto;
+
+  } 
   /* Form Sign Up */
   .form-signup{
 	
 	padding: 10vh 10vh;
-	color:#01c38d;
+	background: linear-gradient(to left, #91EAE4, #86A8E7, #7F7FD5);
+
   }
 
   .main-sign-login {
-	margin: 30vh auto;
+	z-index: 1;
+	margin:0 0 ;
 	width: 350px;
 	height: 500px;
-	background: red;
 	overflow: hidden;
+	left: 0;
+    right: 0;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
-	border-radius: 10px;
-	box-shadow: 5px 20px 50px #000;
+	border-radius: 5vh;
+	
 }
 #chk{
 	display: none;
@@ -174,7 +187,7 @@ label{
 }
 input{
 	width: 60%;
-	height: 20px;
+	height: 30px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -182,7 +195,7 @@ input{
 	padding: 10px;
 	border: none;
 	outline: none;
-	border-radius: 5px;
+	border-radius: 10vh;
 }
 button{
 	width: 60%;
@@ -197,7 +210,7 @@ button{
 	margin-top: 20px;
 	outline: none;
 	border: none;
-	border-radius: 5px;
+	border-radius: 20px;
 	transition: .2s ease-in;
 	cursor: pointer;
 }
@@ -205,14 +218,18 @@ button:hover{
 	background: #157056;
 }
 .login{
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, hsla(138, 82%, 69%, 1) 0%, hsla(186, 100%, 50%, 1) 100%);
+
 	height: 460px;
-	background: #eee;
-	border-radius: 60% / 10%;
+
+	border-radius: 5vh;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #01c38d;
+	padding-top: 0.5vw;
+	color: #3d4558;
 	transform: scale(.6);
 }
 
@@ -225,6 +242,170 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
+
+
+/* Login 2 css */
+.login2-body {
+	padding-top:200px;
+	display: flex;
+	flex-wrap: wrap;
+
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	padding: auto auto;
+
+}
+#login-img{
+	width: 70%;
+}
+
+#home-img{
+	width: 25vw;
+}
+.contain{
+	margin-top: 2vhk;
+	padding-top:120px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
+}
+
+
+
+
+#sidebar {
+    position: absolute;
+    top:0;
+    bottom:0;
+    height: 100%;
+    left:0;
+    background-color: #191e29;
+    width: 80px;
+    overflow: hidden;
+    transition: width 0.3s linear ;
+	padding:0;
+	margin:0;
+	box-shadow: 1px 1px 43px 3px #18191c;
+}
+.sidebar-logo {
+
+    margin: 10px;
+    transition: all 0.5s ease;
+}
+
+
+#sidebar img {
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+   
+  
+}
+
+.sidebar-logo span {
+    padding:15px;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+#sidebar a {
+    text-decoration: none;
+    position: relative;
+    color:rgb(255, 255, 255);
+    font-size: 16px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+
+}   
+.fas {
+    position:relative;
+    width: 60px;
+    height: 40px;
+    top:14px;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.nav-item {
+    position: relative;
+    top:12px;
+    margin-left: 10px;
+}
+
+#sidebar:hover {
+    width: 250px;
+    transition: all 0.5s ease;
+}
+
+
+.logout {
+    position: absolute;
+    bottom:0;
+    
+}
+
+#depo {
+	background-color: #01c38d;
+	border: 2px solid #044936;
+	border-radius: 	10px;
+}
+.pfp-icon {
+	height: 40px;
+	width: 40px;
+	border-radius: 80%;
+
+}
+.main-dash-body{
+	border: 3px solid red;
+	width: calc(100%-40px);
+	height: 900px;
+	margin-left:80px;
+	padding-top: 100px;
+	box-sizing: border-box;
+}
+.dash-text {
+	font-size: 40px;
+	margin-left: 50px;
+	color:#01c38d;
+	text-transform: calc(1.4);
+}
+
+.flex-prop {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	
+}
+.box{
+	border: 3px solid #01c38d;
+	border-radius: 5px;
+	box-sizing: border-box;
+	flex:1;
+	min-width: 400px;
+	height: 300px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.box-1{
+	border: 3px solid #01c38d;
+	border-radius: 5px;
+	box-sizing: border-box;
+	flex:2;
+	height: 300px;
+	min-width: 600px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+
+
+
 
 
 
@@ -248,13 +429,13 @@ button:hover{
 		flex-direction: column;
 		justify-content: space-evenly;
 		border-radius: 6vh;
-    	background-color: #191e29;
+    	background: linear-gradient(137deg, rgb(91 89 110) 0%, rgba(1,195,141,1) 35%, rgba(0,212,255,1) 100%);
 		overflow: hidden;
 		box-sizing: border-box;
 		transition: all .5s ease-in-out;
 	}
 	nav .links a {
-		font-size: 2vh;
+		font-size: 3vh;
 	}
 	nav :checked ~ .links {
 		bottom: 0;
@@ -313,7 +494,6 @@ button:hover{
 	
 	  
 	  .landing-text {
-		padding-top: 5vh;
 		color:white;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	  }
