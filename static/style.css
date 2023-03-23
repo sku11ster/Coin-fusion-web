@@ -277,6 +277,7 @@ button:hover{
 
 
 #sidebar {
+	z-index: 3;
     position: absolute;
     top:0;
     bottom:0;
@@ -361,7 +362,7 @@ button:hover{
 
 }
 .main-dash-body{
-	border: 3px solid red;
+	
 	width: calc(100%-40px);
 	height: 900px;
 	margin-left:80px;
@@ -371,28 +372,36 @@ button:hover{
 .dash-text {
 	font-size: 40px;
 	margin-left: 50px;
-	color:#01c38d;
+	color:#fcfffe;
 	text-transform: calc(1.4);
 }
 
 .flex-prop {
+	margin: 10px;
+	padding: 10px;
+	position: relative;
+	
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
 	
 }
-.box{
-	border: 3px solid #01c38d;
+.box-port{
+	margin: 10px;
 	border-radius: 5px;
 	box-sizing: border-box;
 	flex:1;
 	min-width: 400px;
 	height: 300px;
-	margin-left: 20px;
-	margin-right: 20px;
+	
+	background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
 }
 .box-1{
-	border: 3px solid #01c38d;
+	
+	margin: 10px;
 	border-radius: 5px;
 	box-sizing: border-box;
 	flex:2;
@@ -400,15 +409,74 @@ button:hover{
 	min-width: 600px;
 	margin-left: 20px;
 	margin-right: 20px;
+	background-color: #202632;
+	border-radius: 10px;
+}
+.bal {
+	font-size: 30	px	;
+    margin-top: 25px;
+    margin-left: 1.5vw;
+    position: absolute;
+    color: #ffffff;
+	font-weight: bold;
+}
+.port_val {
+	position: absolute;
+	font-size: 30px	;
+    margin-top: 80px;
+    margin-left: 1.5vw;
+    position: absolute;
+    color: #ffffff;
+	
+}
+.port_val_btc {
+	font-size: 60px	;
+    margin-top: 120px;
+    margin-left: 1.5vw;
+    position: absolute;
+    color: #ffffff;
+	font-weight: bold;
+	
+}
+.box-port img {
+	position: absolute;
+    right: 0;
+    width: 50%;
+	padding: 20px;
 }
 
+.stats-box{
+	margin: 10px;
+	padding-top: 40px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	flex:1;
+	min-width: 400px;
+	height: 300px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #202632;
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
 
+.stat-pfp{
+	position: relative;
+	padding-left: 25px;
+	padding-top: 25px;
+	width: 100px;
+	height: 100px;
+}
+.stat-head {
+	position: absolute;
+	color:white;
+	font-size: 25px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
 
-
-
-
-
-
+}
 @media screen and (max-width: 768px) {
 	nav .logo {
 		float: none;
@@ -502,6 +570,11 @@ button:hover{
 
 
 
-
+	  .box-port img {
+		position: absolute;
+		right: 0;
+		width: 45vw;
+		padding: 20px;
+	}
 
 }

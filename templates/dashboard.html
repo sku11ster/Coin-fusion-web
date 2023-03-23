@@ -98,16 +98,41 @@
 
 
     <div class="flex-prop">
-        <div class="box">
-            <div class="port-val">
-                
+        <div class="box-port">
+            <div class="port">
+                <span class="bal">
+                    Portfolio
+                </span>
+            
+                <span class="port_val" >
+                    $ {{port_val}}
+                </span>
+                <span class="port_val_btc" >
+                    ₿ {{port_val_btc}}
+                </span>
+                <img src="../static/port-bg.svg"   alt="">
             </div>
         </div>
         
         <div class="box-1">
-            <div class="market-stat">
-                
-            </div>
+           
+        </div>
+    </div>
+
+
+    <div class="flex-prop mark-stats">
+        
+        <div class="btc-stat stats-box">
+            <img src="../static/btc.png" class="stat-pfp" alt="">
+            <span class="stat-head">Bitcoin</span>
+        </div>
+        <div class="eth-stat stats-box">
+            <img src="../static/eth.png" class="stat-pfp" alt="">
+            <span class="stat-head">Ethereum</span>
+        </div>
+        <div class="ltc-stat stats-box">
+            <img src="../static/ltc.png" class="stat-pfp" alt="">
+            <span class="stat-head">Litecoin</span>
         </div>
     </div>
 
