@@ -91,13 +91,13 @@ nav .icon-burger .line {
 /* 2 */
 
 .p1 {
-	font-size: 1.2vw;
+	font-size: 1.4vw;
     padding-top: 15vh;
     font-weight: bold;
     width: max-content;
 }
   .p2 {
-    font-size: 2vw;
+    font-size: 2.4vw;
     font-weight: bold;
     display: inline-block;
     width: max-content;
@@ -265,12 +265,13 @@ button:hover{
 	width: 25vw;
 }
 .contain{
-	margin-top: 2vhk;
 	padding-top:120px;
 	display: flex;
 	flex-flow: row wrap;
-	align-items: center;
+	align-items: self-start;
 	justify-content: space-around;
+	margin-right: 320px;
+    margin-left: 320px;
 }
 
 
@@ -302,6 +303,8 @@ button:hover{
     background-color: transparent;
     width: 40px;
     height: 40px;
+	margin-top: 10px;
+    margin-left: 10px;
    
   
 }
@@ -400,6 +403,13 @@ button:hover{
 	overflow: hidden;
 	position: relative;
 }
+
+.box-port:hover {
+	border:2px solid #01c38d;
+	transform: scale(1.03);
+	transition-duration: 0.5s;
+}
+
 .land-box{
 	
 	margin: 10px;
@@ -413,19 +423,7 @@ button:hover{
 
 	border-radius: 10px;
 }
-.box-1{
-	
-	margin: 10px;
-	border-radius: 5px;
-	box-sizing: border-box;
-	flex:2;
-	height: 300px;
-	min-width: 600px;
-	margin-left: 20px;
-	margin-right: 20px;
-	background-color: #202632;
-	border-radius: 10px;
-}
+
 .bal {
 	font-size: 30	px	;
     margin-top: 25px;
@@ -475,6 +473,11 @@ button:hover{
 	position: relative;
 }
 
+.stats-box:hover {
+	border:2px solid #01c38d;
+	transform: scale(1.03);
+	transition-duration: 0.5s;
+}
 .stat-pfp{
 	position: relative;
 	padding-left: 25px;
@@ -517,6 +520,170 @@ nav .links a:hover {
     transform: scale(1.05);
 	transition-duration: 0.4s;
 }
+
+.box-transactions{
+	
+	margin: 10px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	flex:2;
+	height: 300px;
+	min-width: 600px;
+	margin-left: 20px;
+	margin-right: 20px;
+	background-color: #202632;
+	border-radius: 10px;
+}
+
+.head-recent-trans{
+	color: white;
+    padding-top: 20px;
+    position: absolute;
+    padding-left: 30px;
+    font-size: 30px;
+	background-color: #202632;
+
+	display: block;
+	
+}
+
+
+/* Hide the default scrollbar */
+.list-recent::-webkit-scrollbar {
+	width: 100%;
+	background-color: #171818;
+  }
+  
+  .list-recent::-webkit-scrollbar-thumb {
+	background-color: #C1C1C1;
+	border-radius: 10px;
+	
+  }
+  
+  
+  
+  /* Style the container */
+  .list-recent {
+	height: 100%;
+	overflow-y: scroll;
+	
+	scrollbar-width: thin; /* Firefox */
+	scrollbar-color: #C1C1C1 #F5F5F5; /* Firefox */
+	padding-top: 60px; /* Add padding from top */
+	 /* Hide content above padding */
+  }
+  
+  /* Style the list items */
+  .list-recent-item {
+	padding: 10px;
+	
+	color: white;
+	font-size: 25px;
+	overflow: hidden;
+	padding-left: 30px;
+  }
+
+
+
+
+  .flex-prop-row {
+	margin: 10px;
+	padding: 10px;
+	position: relative;
+	
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	padding-top: 150px;
+	
+}
+
+
+  .buy-page-text {
+	color:white;
+	font-size: 65px;
+	font-weight: bold;
+  }
+  .main-buy-msg {
+	
+	width: 600px;
+	border-radius: 25px;
+	flex: 1;
+	text-align: center;
+  }
+  .buy-form	{
+
+	width: 100%;
+	border-radius: 25px;
+	flex: 2;
+	text-align: center;
+  }
+
+
+  .typing-demo {
+	width: 9ch;
+	animation: typing 2s steps(18), blink .5s step-end infinite alternate;
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: 3px solid;
+
+	font-size: 2em;
+	color: #01c38d;
+	font-size: 80px;
+  }
+  
+  @keyframes typing {
+	from {
+	  width: 0
+	}
+  }
+	  
+  @keyframes blink {
+	50% {
+	  border-color: transparent
+	}
+  }
+
+
+
+.buy-tether{
+	height: 120px;
+	width: 120px;
+}
+
+
+.tether-image {
+	animation-name: moveUpDown;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+  }
+  
+  @keyframes moveUpDown {
+	0% {
+	  transform: translateY(0);
+	}
+	50% {
+	  transform: translateY(-25px);
+	}
+	100% {
+	  transform: translateY(0);
+	}
+  }
+
+
+  .new-form{
+	background-color: #ffffff;
+	width: 20%;
+	height: 40px;
+	border-radius: 6px;
+	
+  }
+  .text-buy {
+	font-size: 20px;
+  }
 
 
 @media screen and (max-width: 768px) {

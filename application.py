@@ -17,9 +17,10 @@ def signup():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/login2')
-def login2():
-    return render_template('login2.html')
+
+@app.route('/buy')
+def buy():
+    return render_template('buy.html')
 
 
 if __name__ == '__main__':

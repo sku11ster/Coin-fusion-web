@@ -51,7 +51,12 @@
                 <span class="nav-item">Home</span>
             </a>
         </li>
-        
+        <li>
+            <a href="/buy">
+                <i class="fas fa-solid fa-credit-card"></i>
+                <span class="nav-item">Buy </span>
+            </a>
+        </li>
         <li>
             <a href="#">
                 <i class="fas fa-solid fa-vault"></i>
@@ -59,12 +64,7 @@
             </a>
         </li>
         
-        <li>
-            <a href="#">
-                <i class="fas fa-solid fa-wallet" ></i>
-                <span class="nav-item">Wallet</span>
-            </a>
-        </li>
+        
 
         <li>
             <a href="#">
@@ -89,7 +89,9 @@
         
     </ul>
 </nav>
+{% block content %}
 
+   
 <div class="main-dash-body">
 
     <span class="dash-text">Dashboard</span>
@@ -112,13 +114,37 @@
             </div>
         </div>
         
-        <div class="box-1">
-           
-        </div>
-    </div>
+        <div class="box-transactions">
+            <span class="head-recent-trans">
+                Recent Transactions
+            </span>
+
+            <div class="list-recent">
+                <ul>
+                  {% for item in items %}
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  {% endfor %}
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                  <li class="list-recent-item">Hello{{ item }}</li>
+                </ul>
+            </div>
+        </div>    
+</div>
 
 
-    <div class="flex-prop mark-stats">
+
+<div class="flex-prop mark-stats">
         
         <div class="btc-stat stats-box">
             <img src="../static/btc.png" class="stat-pfp" alt="">
@@ -145,15 +171,7 @@
         </div>
     </div>
 
-    
-</div>
-
-
-
-
-
-
-   
+    {% endblock %}
 
 </body>
 </html>

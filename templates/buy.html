@@ -1,0 +1,41 @@
+{% extends "dashboard.html" %}
+
+
+
+{% block content%}
+<div class="main-body-buy">
+    <div class="flex-prop-row">
+        <div class="main-buy-msg">
+            <span class="buy-page-text">
+                Buy To Trade.
+            </span>
+            <img class="buy-tether tether-image"  src="../static/tether.svg" alt="tether" >
+        </div>
+
+        <div class="buy-form">
+            <form>
+                
+                <label class="text-buy" for="usdt-amount">USDT Amount:</label>
+                <input class="new-form" type="number" id="usdt-amount" name="usdt-amount" min="10" step="100" required>
+                
+                <label class="text-buy" for="card-name">Name:</label>
+                <input class="new-form" type="text" id="card-name" name="card-name" required>
+              
+                <label class="text-buy" for="card-number">Credit Card Number:</label>
+                <input class="new-form" type="text" id="card-number" name="card-number" required>
+              
+                <label class="text-buy" for="expiry-date">Expiry Date:</label>
+                <input class="new-form" type="month" id="expiry-date" name="expiry-date" required>
+              
+                <label class="text-buy" for="cvv">CVV:</label>
+                <input class="new-form" type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" required>
+              
+                <button type="submit">Submit</button>
+              </form>
+              
+        </div>
+
+    </div>
+   
+</div>
+{% endblock %}
