@@ -320,6 +320,7 @@ button:hover{
     display: table;
     width: 300px;
     padding: 10px;
+	margin:0px;
 
 }   
 .fas {
@@ -394,10 +395,23 @@ button:hover{
 	min-width: 400px;
 	height: 300px;
 	
-	background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #01C38D, #2ecf606b);
 	border-radius: 10px;
 	overflow: hidden;
 	position: relative;
+}
+.land-box{
+	
+	margin: 10px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	flex:2;
+	height: 300px;
+	min-width: 600px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	border-radius: 10px;
 }
 .box-1{
 	
@@ -476,7 +490,35 @@ button:hover{
     margin-top: 50px;
 }
 
+.stat-head-price{
+	color: white;
+    font-size: 45px;
+    padding-top: 80px;
+    position: absolute;
 }
+
+.stat-head-growth{
+	
+    font-size: 35px;
+    padding-top: 140px;
+    position: absolute;
+    color: #cf9a04;
+
+}
+
+#sidebar a:hover {
+	transform: scale(1.05);
+	color: #01c38d;
+	transition-duration: 0.3s;
+}
+
+
+nav .links a:hover {
+    transform: scale(1.05);
+	transition-duration: 0.4s;
+}
+
+
 @media screen and (max-width: 768px) {
 	nav .logo {
 		float: none;
