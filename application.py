@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
 
@@ -21,6 +21,18 @@ def dashboard():
 @app.route('/buy')
 def buy():
     return render_template('buy.html')
+
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
+@app.route('/markets')
+def markets():
+    return render_template('markets.html')
+    
+@app.route('/deposit-withdrawal')
+def deposit_withdrawal():
+    return render_template('deposit-withdrawal.html')
 
 
 if __name__ == '__main__':

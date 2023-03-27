@@ -82,3 +82,22 @@ fetch("https://api.binance.com/api/v3/ticker/24hr?symbol=LTCUSDT")
   .catch(error => {
     console.error("Failed to fetch LTC price change:", error);
   });
+
+  //Function for Button to hold value of usdt amount
+  function displayValueBuy() {
+    var input = document.getElementById("usdt-amount").value;
+    var button = document.getElementById("display-button");
+    button.innerHTML = "Purchase $" + input;
+  }
+
+
+
+  const targetDiv = document.getElementById("third");
+  const btn = document.getElementById("toggle");
+  btn.onclick = function () {
+    if (targetDiv.style.display !== "none") {
+      targetDiv.style.display = "none";
+    } else {
+      targetDiv.style.display = "block";
+    }
+  };

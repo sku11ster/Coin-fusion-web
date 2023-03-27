@@ -12,27 +12,33 @@
             <img class="buy-tether tether-image"  src="../static/tether.svg" alt="tether" >
         </div>
 
-        <div class="buy-form">
-            <form>
+        <div class="payment-card">
+            <img class="main-buy-img" src="../static/buy.svg" alt="">
+            <br>
+            <span class="buy-title">
+                Tether Amount
+            </span>
+            <div class="input-buy">
+                <input type="text" id="usdt-amount" placeholder="$1000" oninput="displayValueBuy()">
+            </div>
+            <div class="input-buy">
+                <span class="payment-title">Payment Details</span>
+                <input type="text" id="card-name" placeholder="Name on Card">
                 
-                <label class="text-buy" for="usdt-amount">USDT Amount:</label>
-                <input class="new-form" type="number" id="usdt-amount" name="usdt-amount" min="10" step="100" required>
+            </div>
+            <div class="input-buy">
+                <input type="text" id="card-num" placeholder="Card Number">
+                <input type="text" id="card-exp" placeholder="Expiry">
+                <input type="text" id="card-cvv" placeholder="CVV">
                 
-                <label class="text-buy" for="card-name">Name:</label>
-                <input class="new-form" type="text" id="card-name" name="card-name" required>
-              
-                <label class="text-buy" for="card-number">Credit Card Number:</label>
-                <input class="new-form" type="text" id="card-number" name="card-number" required>
-              
-                <label class="text-buy" for="expiry-date">Expiry Date:</label>
-                <input class="new-form" type="month" id="expiry-date" name="expiry-date" required>
-              
-                <label class="text-buy" for="cvv">CVV:</label>
-                <input class="new-form" type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" required>
-              
-                <button type="submit">Submit</button>
-              </form>
-              
+            </div>
+
+            <div class="buy-button">
+                 <button id="display-button">Purchase</button>
+            </div>
+
+            
+
         </div>
 
     </div>
