@@ -1,60 +1,207 @@
-from flask import Flask, render_template, redirect, url_for
-import requests,json
-import qrcode
-import io
-import base64
+from flask import Flask, render_template, request, make_response,session,redirect,url_for
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, date
+import requests
+import pyodbc
+
 
 
 app = Flask(__name__)
+app.secret_key = 'my_secret_key'
+
+server = '.'
+database = 'proj'
+driver = '{SQL Server}'
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+conn_str = f"""
+    DRIVER={driver};
+    SERVER={server};
+    DATABASE={database};
+    Trusted_Connection=yes;
+"""
+
+conn = pyodbc.connect(conn_str)
 
 
-@app.route('/signup')
+
+
+    
+    
+#  @app.route('/login',methods=["GET","POST"])
+
+#  def converter():
+#     session=db.session()
+
+#     currency_from='USDT'
+#     currency_to='BUSD'
+#     ammount=5
+#     response = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={currency_from}&vs_currencies={currency_to}")
+#     if response.status_code==200:
+     
+#      try:
+
+#         conversion_rate = response.json()[currency_from][currency_to]
+#         converted_ammount=ammount*conversion_rate
+#         keyword='e'
+#      except keyword as e:
+#         return 'nigga error'
+
+#         wallet=session.query(Wallet).filter_by(Wallet_Id='1',User_Id='1',Currency_code=currency_from).first()
+#         if wallet is true :
+#             wallet.Balance+=converted_ammount
+#             wallet.Currency_code=currency_to
+#             wallet.Last_update=datetime.utnow()
+#             session.commit()
+#         else:
+#             return render_template('post.html')
+
+
+@app.route("/")
+def great():
+    return render_template("index.html")
+
+
+
+
+@app.route("/signup")
 def signup():
-    return render_template('signup.html')
+    return render_template("signup.html")
+
+
+@app.route("/signup", methods=["GET","POST"])
+def signupform():
+   
+         name = request.form.get('txt')
+         email = request.form.get('email')
+         password = request.form.get('pswd')
+         action=request.form.get('action')
+         cursor = conn.cursor()
+         cursor.execute("SELECT * FROM Users WHERE name = ? AND email = ?", (name, email))
+         rows = cursor.fetchall()
+         if rows:
+           
+            error = "User already exists!"
+            return "User Already Exist!"
+         else:
+            u_timestamp = datetime.now().strftime('%Y%m%d%H%M%S%f')
+            w_timestamp = datetime.now().strftime('%Y%m%d%H%M%S%f')
+
+
+            user_id = f"{name}-{u_timestamp}"
+            wallet_id = f"{w_timestamp}"
+            
+            cursor.execute("insert into Wallet(Wallet_Id) values( '"+wallet_id+"');INSERT INTO Users (User_ID, Name, Email, Password,Wallet_Id) VALUES (?, ?, ?, ?,?)", (user_id, name, email, password,wallet_id))
+            conn.commit()
+           
+            return render_template("signup.html")
+         
+       
+    
+@app.route("/login", methods=["GET","POST"])
+def loginform():
+    cursor=conn.cursor()
+    email = request.form.get('log_email')
+    password = request.form.get('log_pswd')
+    cursor.execute("SELECT * FROM Users WHERE Password = ? AND Email = ?", (password, email))
+    rows = cursor.fetchall()
+    if rows:
+        check_email=rows[0][2]
+        check_pass=rows[0][3]
+        user_id=rows[0][0]
+        wallet_id=rows[0][4]
+        session['User_Id']=user_id
+        session['Wallet_Id']=wallet_id
+        conn.commit()
+        return redirect(url_for('dashboard'))
+    else :
+        conn.commit()
+        return "Login failed"
+    
+
 
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    
+    cursor=conn.cursor()
+    User_Id=session["User_Id"]
+    cursor.execute("Select Wallet_Id from Users where User_Id='"+User_Id+"'")
+    
+    row1=cursor.fetchall()
+    wallet_id=row1[0][0]
+
+    dollar='usdt'
+    cursor.execute("Select sum(Balance) from Wallet where Wallet_Id='"+wallet_id+"' and Currency_code=?",(dollar))
+    row2=cursor.fetchall()
+    if row2:
+     Balance_dollar=row2[0][0]
+    else:
+        Balance_dollar=0.0
+    
+
+
+    btc='btc'
+    cursor.execute("Select sum(Balance) from Wallet where Wallet_Id='"+wallet_id+"' and Currency_code='"+btc+"'")
+    row3=cursor.fetchall()
+    if row3:
+     Balance_btc=row3[0][0]
+    else:
+        Balance_btc=0.0
+    
+    conn.commit()
+
+    return render_template('dashboard.html',port_val=Balance_dollar,port_val_btc=Balance_btc)
+
 
 
 @app.route('/buy')
 def buy():
-    return render_template('buy.html')
+    return render_template('/buy.html')
 
-@app.route('/home')
-def home():
-    return render_template('index.html')
-
-@app.route('/markets')
-def markets():
-    return render_template('markets.html')
-
-@app.route('/deposit-withdrawal')
-def deposit_withdrawal_addy():
-    #hamza vro compute the crypto address here and store it in var "addy"
+@app.route('/submit',methods=["GET","POST"])
+def bought():
+    cursor=conn.cursor()
 
 
+    u_timestamp = datetime.now().strftime('%Y%m%d%H%M%S%f')
+    deposit_id = f"{u_timestamp}"
+    
+    User_Id=session['User_Id']
+    Wallet_id=session['Wallet_Id']
+    card_name=request.form.get('card-name')
+    card_num=request.form.get('card-number')
+    exp_date=request.form.get('expiry-date')
+    cvv=request.form.get('cvv')
+    amount=request.form.get('usdt-amount')
+    datenow=datetime.now().date().strftime('%Y-%m-%d')
+    cursor.execute("INSERT INTO Deposit (Deposit_Id, User_Id, Wallet_Id, Card_Name, Card_Num, Ammount, Currency, CVV, Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (deposit_id, User_Id, Wallet_id, card_name, card_num, amount, 'usdt', cvv, datenow))
+    
+    cursor.execute('select * from Wallet where Wallet_Id=? and Currency_code=?',(Wallet_id,"usdt"))
+    row=cursor.fetchall()
+    if not row:
+        cursor.execute('insert into Wallet(Wallet_Id,Currency_code) values(?,?)',(Wallet_id,'usdt'))
 
-    qr = qrcode.QRCode(version=1, box_size=10, border=4)
-    qr.add_data("address:" + addy)
-    qr.make(fit=True)
-    img = qr.make_image(fill_color="black", back_color="white")
+    cursor.execute('update wallet set Balance=Balance+? where Wallet_Id=? and Currency_code=?',(amount,Wallet_id,"usdt"))
 
-    # Convert the image to a base64-encoded string and embed it in the HTML
-    buffered = io.BytesIO()
-    img.save(buffered, format="PNG")
-    img_str = base64.b64encode(buffered.getvalue()).decode()
-    qr_src = f"data:image/png;base64,{img_str}"
+    conn.commit()
 
-    return render_template('deposit-withdrawal.html', address=addy, qr_src=qr_src)
+
+    return render_template('/dashboard.html')
+
+
     
     
 
-if __name__ == '__main__':
+
+
+
+if __name__== '__main__':
     app.run(debug=True)
+    
+    
+
+
+
+
+
