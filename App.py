@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, make_response,session,redirect,url_for
-from flask_sqlalchemy import SQLAlchemy
+
 from datetime import datetime, date
 import requests
-import pyodbc
+
 from getprice import get_price_in_usdt
 
 
